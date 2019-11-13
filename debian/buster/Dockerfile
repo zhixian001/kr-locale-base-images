@@ -9,7 +9,9 @@ RUN sed -i 's/deb.debian.org/ftp.harukasan.org/g' /etc/apt/sources.list && \
     rm -rf /var/lib/apt/lists/* && \
     echo "ko_KR.UTF-8 UTF-8" >> /etc/locale.gen && \
     locale-gen && \
-    localedef -i ko_KR -c -f UTF-8 -A /usr/share/locale/locale.alias ko_KR.UTF-8
+    localedef -i ko_KR -c -f UTF-8 -A /usr/share/locale/locale.alias ko_KR.UTF-8 && \
+    ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime && \
+    echo "Asia/Seoul" > /etc/timezone
 
 ENV LANG="ko_KR.UTF-8" \
     LANGUAGE="ko_KR.UTF-8" \
